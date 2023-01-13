@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --utama: black;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    border: none;
+    border-radius: 0;
+    margin: 0 20px;
+    margin-bottom: 20px;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.nav-item {
+    padding: 0 10px;
+    transition: 0.5s;
+    font-weight: 600;
+    color: black;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.content {
+    margin: 0px 20px;
+}
+
+.primary-button {
+    background-color: black; 
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 10px 12px;
+    border: 2px solid black;
+    font-weight: 700;
+    transition: 0.7s;
+}
+
+.secondary-button {
+    background-color: white; 
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 10px 12px;
+    border: 2px solid black;
+    font-weight: 700;
+    transition: 0.7s;
+}
+.primary-button:hover {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    box-shadow: 0px 0px 10px #d1d1d1;
+    background: #1E1E1E;
+    color: white;
+    transition: all 0.3s;
+    padding: 0px 15px;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 0 10px;
+    height: 100px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#sidebar .sidebar-header .header-logo {
+    width: 40px;
+    height: 40px;
+    background-color: var(--utama);
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#sidebar .sidebar-header .header-title > * {
+    margin: 0;
+}
+
+#sidebar .sidebar-header .header-title > h5 {
+    font-weight: 800;
+}
+
+#sidebar .sidebar-header .header-title > p {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul p {
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0px 10px;
+}
+
+#sidebar ul li {
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid white;
+}
+
+#sidebar ul li a, #sidebar ul li button {
+    color: rgb(148, 148, 148);
+    padding: 10px 13px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: 600;
+}
+
+#sidebar ul li a:hover, #sidebar ul li button:hover {
+    color: #1E1E1E;
+    border-radius: 8px;
+    background: white;
+}
+
+#sidebar ul li .active {
+    color: black;
+    border-radius: 7px;
+    background: white;
+}
+
+#sidebar .navbar-nav .nav-link:hover {
+    color: white;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: black;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+.sidebar-button.btn {
+    font-size: 16px;
+    color: white;
+    border: none;
+    background-color: var(--utama);
+    border-radius: 14px;
+    padding: 10px 15px;
+    outline: none;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+.content > .form-header {
+	font-weight: 700;
+}
+
+.text-black {
+    color: black;
+}
+
+.bg-black {
+    background: black;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}

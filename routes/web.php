@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -24,11 +25,15 @@ Route::get('/', function () {
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', function() {
-    return "hai selamat datang di admin!";
+    return view('admin/dashboard', [
+        'title' => 'Eazy Play! - Administrator'
+    ]);
 })->middleware('auth'); 
+
+Route::resource('/dashboard/products', ProductController::class)->except('show')->middleware('auth');
