@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+use App\Models\Category;
+use App\Models\Product;
+
 class ProductController extends Controller
 {
     /**
@@ -26,7 +30,8 @@ class ProductController extends Controller
     public function create()
     {
         return view('admin/product/create', [
-            'title' => 'Eazy Play! - Create product'
+            'title' => 'Eazy Play! - Create product',
+            'categories' => Category::all()
         ]);
     }
 
@@ -38,7 +43,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'slug' => 'required|unique:products',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'image' => 'image'
+        ]);
+
+        $slug = SlugService::createSlug(Product::class, 'slug', $request->name);
+        dd($slug);
     }
 
     /**

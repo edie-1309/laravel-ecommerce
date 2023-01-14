@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="d-flex justify-content-between w-100">
+    <div class="container d-flex justify-content-between w-100">
 
         <button type="button" id="sidebarCollapse" class="sidebar-button btn">
             <i class="fa-solid fa-align-justify"></i>

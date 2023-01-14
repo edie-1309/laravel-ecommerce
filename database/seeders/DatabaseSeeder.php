@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Category;
 use \App\Models\Role;
 use \App\Models\User;
 
@@ -25,11 +27,23 @@ class DatabaseSeeder extends Seeder
         // ]);
         
         Role::create([
-            'name' => 'Admin'
+            'name' => 'admin',
+            'description' => 'Administrator'
         ]);
         
         Role::create([
-            'name' => 'Staff'
+            'name' => 'staff',
+            'description' => 'Staff'
+        ]);
+
+        Category::create([
+            'name' => 'Action',
+            'slug' => 'action'
+        ]);
+
+        Category::create([
+            'name' => 'FPS',
+            'slug' => 'fps'
         ]);
 
     }

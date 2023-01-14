@@ -2,7 +2,7 @@
     <div class="sidebar-header justify-content-center">
         <div class="header-title text-center">
             <h5>Admin</h5>
-            <p>Edi Nugroho</p>
+            <p>{{ auth()->user()->name }}</p>
         </div>
     </div>
 
@@ -19,9 +19,6 @@
         </li>
         <li>
             <a href="/inventory" class="">Inventories</a>
-        </li>
-        <li>
-            <a href="/options" class="">Options</a>
         </li>
 
         <hr>
