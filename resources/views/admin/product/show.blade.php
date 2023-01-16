@@ -18,7 +18,7 @@
                         <small class="badge bg-dark">{{ $category->name }}</small>
                     @endforeach
                   </p>
-                  <p class="d-inline-block bg-dark rounded text-light fw-semibold py-2 px-3">
+                  <p class="d-inline-block text-dark fw-semibold">
                     Price : {{ $product->price }}
                   </p>
                 </div>

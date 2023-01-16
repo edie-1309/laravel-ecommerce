@@ -13,12 +13,17 @@
             <a href="/dashboard" class="{{ Request::is('dashboard') ? 'active' : '' }}">Dashboard</a>
         </li>
 
-        <p>Products</p>
+        <p>Product</p>
         <li>
             <a href="/dashboard/products" class="{{ Request::is('dashboard/product*') ? 'active' : '' }}">Products</a>
         </li>
         <li>
-            <a href="/inventory" class="">Inventories</a>
+            <a href="" class="">Stock</a>
+        </li>
+
+        <p>Category</p>
+        <li>
+            <a href="/dashboard/categories" class="{{ Request::is('dashboard/categories*') ? 'active' : '' }}">Categories</a>
         </li>
 
         <hr>
