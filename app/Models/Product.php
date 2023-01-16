@@ -21,7 +21,15 @@ class Product extends Model
 
     protected $guarded = ['id'];
 
+    public function category()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function sluggable(): array
     {

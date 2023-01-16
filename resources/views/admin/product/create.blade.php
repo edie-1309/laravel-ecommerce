@@ -4,11 +4,16 @@
     <div class="container">
         <h2 class="mb-3">Create product</h2>
 
-        <form action="/dashboard/products" method="post" enctype="multipart/form-data">
+        <form action="/dashboard/products" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" id="name">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}">
+                @error('name')
+                    <div id="name" class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>  
 
             <div class="mb-3">
@@ -21,21 +26,37 @@
                         </label>
                     </div>
                 @endforeach
+                @error('category_id')
+                    <p class="text-danger"><small>{{ $message }}</small></p>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="formFile" class="form-label">Image</label>
                 <img class="img-preview img-fluid mb-3 col-sm-3">
-                <input class="form-control" type="file" name="image" id="image" onchange="previewImage()">
+                <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="image" onchange="previewImage()">
+                @error('image')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="price" id="price">
+                <input type="text" class="form-control @error('price') is-invalid @enderror" name="price" id="price" value="{{ old('price') }}">
+                @error('price')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
+                @error('description')
+                    <p class="text-danger"><small>{{ $message }}</small></p>           
+                @enderror
                 <input id="description" type="hidden" name="description" value="{{ old('description') }}">
                 <trix-editor input="description"></trix-editor>
             </div>

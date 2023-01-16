@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProductTestController;
+use App\Http\Controllers\AdminProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,7 @@ Route::get('/dashboard', function() {
     ]);
 })->middleware('auth'); 
 
-Route::resource('/dashboard/products', ProductController::class)->except('show')->middleware('auth');
+// Check Slug Product
+Route::get('/dashboard/products/checkSlug', [AdminProductController::class, 'checkSlug'])->middleware('auth');
+
+Route::resource('/dashboard/products', AdminProductController::class)->middleware('auth');
