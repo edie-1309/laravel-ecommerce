@@ -27,7 +27,7 @@
                 <tr>
                   <th scope="row">{{ $loop->iteration }}</th>
                   <td>{{ $product->name }}</td>
-                  <td>
+                  <td class="col-3">
                     @foreach ($product->category as $category)
                     <div class="badge bg-dark">
                       {{ $category->name }}

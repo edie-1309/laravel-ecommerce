@@ -18,7 +18,7 @@
             <a href="/dashboard/products" class="{{ Request::is('dashboard/product*') ? 'active' : '' }}">Products</a>
         </li>
         <li>
-            <a href="" class="">Stock</a>
+            <a href="/dashboard/stock" class="{{ Request::is('dashboard/stock*') ? 'active' : '' }}">Stock</a>
         </li>
 
         <p>Category</p>

@@ -7,7 +7,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProductTestController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminStockController;
 
+use App\Models\Product;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,17 +22,22 @@ use App\Http\Controllers\AdminProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome', [
-        'title' => 'Home'
+    return view('home', [
+        'title' => 'Eazy Play! - Home',
+        'products' => Product::all()
     ]);
 });
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login', 'index')->name('login');
+    Route::post('/login', 'authenticate');
+    Route::post('/logout', 'logout');
+});
 
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store']);
+Route::controller(RegisterController::class)->group(function () {
+    Route::get('/register', 'index');
+    Route::post('/register', 'store');
+});
 
 Route::get('/dashboard', function() {
     return view('admin/dashboard', [
@@ -44,3 +51,5 @@ Route::get('/dashboard/products/checkSlug', [AdminProductController::class, 'che
 Route::resource('/dashboard/products', AdminProductController::class)->middleware('auth');
 
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except(['show', 'edit', 'update'])->middleware('auth');
+
+Route::resource('/dashboard/stock', AdminStockController::class)->except('show')->middleware('auth');

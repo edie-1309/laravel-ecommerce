@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: Inter;
+}
+
+/* Home Page */
+.dashboard {
+    height: 90vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),url('/img-assets/banner.jpg');
+}
+
+.games {
+    height: 100vh;
+}
+
+.list-games .card.image-product img {
+    max-width: 100%;
+}
+
+.list-games .card.image-product {
+    width: 15rem;
+    height: 20rem;
+    overflow: hidden;
+}
+
+/* Utilities */
+.text-black {
+    color: black;
+}
