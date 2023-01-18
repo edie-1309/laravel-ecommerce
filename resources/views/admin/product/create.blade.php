@@ -32,6 +32,21 @@
             </div>
 
             <div class="mb-3">
+                <label for="category" class="form-label">Platform</label>
+                @foreach ($platform as $platform)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{ $platform->id }}" name="platform_id[]" id="platform{{ $platform->id }}">
+                        <label class="form-check-label" for="platform{{ $platform->id }}">
+                            {{ $platform->name }}
+                        </label>
+                    </div>
+                @endforeach
+                @error('platform')
+                    <p class="text-danger"><small>{{ $message }}</small></p>
+                @enderror
+            </div>
+
+            <div class="mb-3">
                 <label for="formFile" class="form-label">Image</label>
                 <img class="img-preview img-fluid mb-3 col-sm-3">
                 <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="image" onchange="previewImage()">

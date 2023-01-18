@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-
+use App\Models\Platform;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
@@ -19,7 +19,7 @@ class AdminProductController extends Controller
     public function index()
     {
         return view('admin/product/index', [
-            'title' => 'Products',
+            'title' => 'Admin - Products',
             'products' => Product::all()
         ]);
     }
@@ -33,7 +33,8 @@ class AdminProductController extends Controller
     {
         return view('admin/product/create', [
             'title' => 'Create product',
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'platform' => Platform::all()
         ]);
     }
 

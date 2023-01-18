@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use Cviebrock\EloquentSluggable\Services\SlugService;
+use App\Models\Platform;
 use Illuminate\Http\Request;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
-class AdminCategoryController extends Controller
+class AdminPlatformController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin/category/index', [
-            'title' => 'Admin - Categories',
-            'categories' => Category::all()
+        return view('admin/platform/index', [
+            'title' => 'Admin - Platform',
+            'platform' => Platform::all()
         ]);
     }
 
@@ -28,7 +28,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -40,23 +40,23 @@ class AdminCategoryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'required'
         ]);
 
-        $validatedData['slug'] = SlugService::createSlug(Category::class, 'slug', $request->name);
+        $validatedData['slug'] = SlugService::createSlug(Platform::class, 'slug', $request->name);
 
-        Category::create($validatedData);
+        Platform::create($validatedData);
 
-        return redirect('/dashboard/categories')->with('success', 'Category has been added!');
+        return redirect('/dashboard/platform')->with('success', 'Platform has beed added!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Platform $platform)
     {
         //
     }
@@ -64,10 +64,10 @@ class AdminCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Platform $platform)
     {
         //
     }
@@ -76,10 +76,10 @@ class AdminCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Platform $platform)
     {
         //
     }
@@ -87,14 +87,13 @@ class AdminCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Platform $platform)
     {
+        Platform::destroy($platform->id);
 
-        Category::destroy($category->id);
-
-        return redirect('/dashboard/categories')->with('success', 'Category has been deleted!');
+        return redirect('/dashboard/platform')->with('success', 'Platform has beed deleted!');
     }
 }

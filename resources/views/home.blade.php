@@ -9,29 +9,31 @@
         <div class="games">
             <div class="category">
                 <h1 class="fw-bold mb-5 text-center">Playstation 4</h1>
-                <div class="list-games d-flex justify-content-between">
+                <div class="list-games row justify-content-start">
                     @foreach ($products as $product)
-                        <div class="card image-product">
-                            <img src="{{ asset('storage') . '/' . $product->image }}" class="card-img-top" alt="{{ $product->slug }}">
+                        <div class="col-md-4 d-flex justify-content-center mb-5">
+                            <div class="image-product overflow-hidden">
+                                <img src="{{ asset('storage') . '/' . $product->image }}" class="card-img-top" alt="{{ $product->slug }}">
+                            </div>
                         </div>
                     @endforeach
-                    {{-- <div class="card" style="width: 18rem;">
-                        <img src="" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="" class="card-img-top" alt="...">
-                    </div> --}}
                 </div>
 
                 <h1 class="fw-bold my-5 text-center">Nintendo Switch</h1>
-                <div class="list-games d-flex justify-content-between">
-                    <div class="card" style="width: 18rem;">
+                <div class="list-games row">
+                    <div class="card col-md-4" style="width: 18rem;">
                         <img src="" class="card-img-top" alt="...">
                     </div>
-                    <div class="card" style="width: 18rem;">
+                    <div class="card col-md-4" style="width: 18rem;">
                         <img src="" class="card-img-top" alt="...">
                     </div>
-                    <div class="card" style="width: 18rem;">
+                    <div class="card col-md-4" style="width: 18rem;">
+                        <img src="" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card col-md-4" style="width: 18rem;">
+                        <img src="" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card col-md-4" style="width: 18rem;">
                         <img src="" class="card-img-top" alt="...">
                     </div>
                 </div>

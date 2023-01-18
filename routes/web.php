@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminPlatformController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
@@ -53,3 +54,5 @@ Route::resource('/dashboard/products', AdminProductController::class)->middlewar
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except(['show', 'edit', 'update'])->middleware('auth');
 
 Route::resource('/dashboard/stock', AdminStockController::class)->except('show')->middleware('auth');
+
+Route::resource('/dashboard/platform', AdminPlatformController::class)->except('shoe')->middleware('auth');

@@ -31,6 +31,11 @@ class Product extends Model
         return $this->belongsTo(Stock::class);
     }
 
+    public function platform()
+    {
+        return $this->belongsToMany(Platform::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';

@@ -26,6 +26,11 @@
             <a href="/dashboard/categories" class="{{ Request::is('dashboard/categories*') ? 'active' : '' }}">Categories</a>
         </li>
 
+        <p>Platform</p>
+        <li>
+            <a href="/dashboard/platform" class="{{ Request::is('dashboard/platform*') ? 'active' : '' }}">Platform</a>
+        </li>
+
         <hr>
 
         <li>
