@@ -15,9 +15,11 @@
     {{-- If error --}}
     @if ($errors->any())
         <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                {{ $error }}
-            @endforeach
+            <ul type="none">
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+            </ul>
         </div>
     @endif
 

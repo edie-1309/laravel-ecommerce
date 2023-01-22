@@ -4,109 +4,87 @@ namespace App\Http\Controllers;
 
 use App\Models\Stock;
 use App\Models\Product;
+use App\Models\Platform;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminStockController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('admin/stock/index', [
             'title' => 'Admin - Stock',
-            'stock' => Stock::all()
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin/stock/create', [
-            'title' => 'Create stock',
             'products' => Product::all()
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'product_id' => 'required',
+            'platform_id' => 'required',
             'stock' => 'required|numeric'
+        ],
+        [
+            'platform_id' => 'The Platform is required'
         ]);
+        
+        // Check if platform already exist
+        $platform = Stock::where([
+                                    ['product_id', '=', $request->product_id],
+                                    ['platform_id', '=', $request->platform_id]
+                                ])->first();
 
-        Stock::create($validatedData);
+        if($platform)
+        {
+            if($request->platform_id == $platform->platform_id)
+            {
+                // dump('platform already exist');
+                return back()->with('fail', 'Platform already exist!');
+            }
+        }
 
-        return redirect('/dashboard/stock')->with('success', 'Stock has beed added');
+            Stock::create($validatedData);
+
+        return back()->with('success', 'Stock has beed added');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Stock $stock)
+    public function show(Product $product)
     {
-        //
+        return view('admin/stock/show', [
+            'title' => 'Detail Product - ' . $product->name,
+            'product' => $product
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Stock $stock)
     {
-        return view('admin/stock/edit', [
-            'title' => 'Edit stock',
+        $stock = $stock;
+        $platform_name = $stock->platform->name;
+
+        return response()->json([
             'stock' => $stock,
-            'products' => Product::all()
+            'platform_name' => $platform_name
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Stock $stock)
+    public function update(Request $request)
     {
         $validatedData = $request->validate([
             'product_id' => 'required',
+            'platform_id' => 'required',
             'stock' => 'required|numeric'
         ]);
 
-        Stock::where('id', $stock->id)->update($validatedData);
+        Stock::where('id', $request->id)->update($validatedData);
 
-        return redirect('/dashboard/stock')->with('success', 'Stock has been updated');
+        return back()->with('success', 'Stock has beed updated!')->with('success', 'Stock has been updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Stock $stock)
     {
         Stock::destroy($stock->id);
 
-        return redirect('/dashboard/stock')->with('success', 'Stock has been deleted!');
+        return back()->with('success', 'Stock has been deleted');
     }
 }

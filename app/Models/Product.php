@@ -10,15 +10,6 @@ class Product extends Model
 {
     use HasFactory, Sluggable;
 
-    // protected $fillable = [
-    //     'name',
-    //     'slug',
-    //     'description',
-    //     'price', 
-    //     'image',
-    //     'category_id'
-    // ];
-
     protected $guarded = ['id'];
 
     public function category()
@@ -28,12 +19,12 @@ class Product extends Model
 
     public function stock()
     {
-        return $this->belongsTo(Stock::class);
+        return $this->hasMany(Stock::class);
     }
 
     public function platform()
     {
-        return $this->belongsToMany(Platform::class);
+        return $this->belongsToMany(Platform::class, 'product_platform')->withTimestamps();
     }
 
     public function getRouteKeyName()

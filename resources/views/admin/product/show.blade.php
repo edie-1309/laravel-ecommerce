@@ -18,6 +18,11 @@
                         <small class="badge bg-dark">{{ $category->name }}</small>
                     @endforeach
                   </p>
+                  <p class="card-text">
+                    @foreach ($product->platform as $platform)
+                        <small class="badge bg-light text-dark">{{ $platform->name }}</small>
+                    @endforeach
+                  </p>
                   <p class="d-inline-block text-dark fw-semibold">
                     Price : {{ $product->price }}
                   </p>

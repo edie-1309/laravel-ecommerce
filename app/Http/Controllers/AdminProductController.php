@@ -50,9 +50,13 @@ class AdminProductController extends Controller
         $validatedDataProduct = $request->validate([
             'name' => 'required|max:255',
             'category_id' => 'required',
+            'platform_id' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
             'image' => 'image'
+        ], [
+            'category_id' => 'Category field is required',
+            'platform_id' => 'Platform field is required'
         ]);
 
         if($request->file('image'))
@@ -64,10 +68,15 @@ class AdminProductController extends Controller
         
         $product = Product::create($validatedDataProduct);
         
-        // Insert for product_category
+        // Insert for product category
         $category_id = $request->category_id;
 
         $product->category()->attach($category_id);
+
+        // Insert for product platform
+        $platform_id = $request->platform_id;
+
+        $product->platform()->attach($platform_id);
         
         return redirect('/dashboard/products')->with('success', 'New product has been added!');
     }
@@ -97,7 +106,8 @@ class AdminProductController extends Controller
         return view('admin/product/edit', [
             'title' => 'Edit Product',
             'product' => $product,
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'platform' => Platform::all()
         ]);
     }
 
@@ -127,6 +137,11 @@ class AdminProductController extends Controller
         $request->validate([
             'category_id' => 'required'
         ]);
+        
+        // Validation for category product
+        $request->validate([
+            'platform_id' => 'required'
+        ]);
 
         $validatedDataProduct = $request->validate($rules);
 
@@ -147,6 +162,12 @@ class AdminProductController extends Controller
         
         // Update for category product table
         $product->category()->sync($category_id);
+
+        // Category Id from request
+        $platform_id = $request->platform_id;
+        
+        // Update for category product table
+        $product->platform()->sync($platform_id);
         
         return redirect('/dashboard/products')->with('success', 'Product has been updated!');
     }
@@ -178,5 +199,12 @@ class AdminProductController extends Controller
         $slug = SlugService::createSlug(Product::class, 'slug', $request->name);
 
         return response()->json(['slug' => $slug]);
+    }
+
+    // Get platform product
+    public function getPlatform(Product $product)
+    {
+        $platform = $product->platform;
+        return response()->json(['platform' => $platform]);
     }
 }

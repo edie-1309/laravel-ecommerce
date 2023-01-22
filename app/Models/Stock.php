@@ -17,4 +17,9 @@ class Stock extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function platform()
+    {
+        return $this->belongsTo(Platform::class);
+    }
 }

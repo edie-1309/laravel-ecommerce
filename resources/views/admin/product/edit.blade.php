@@ -41,6 +41,24 @@
         </div>
 
         <div class="mb-3">
+            <label for="platform" class="form-label">Platform</label>
+            @foreach ($platform as $platform)
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="{{ $platform->id }}" name="platform_id[]" id="platform{{ $platform->id }}" 
+                    @foreach ($product->platform as $product_platform) 
+                        {{ (old('platform_id', $product_platform->id) == $platform->id) ? 'checked' : '' }} 
+                    @endforeach>
+                    <label class="form-check-label" for="platform{{ $platform->id }}">
+                        {{ $platform->name }}
+                    </label>
+                </div>
+            @endforeach
+            @error('platform_id')
+                <p class="text-danger"><small>{{ $message }}</small></p>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="formFile" class="form-label">Image</label>
             
             <input type="hidden" name="oldImage" value="{{ $product->image }}">

@@ -49,10 +49,22 @@ Route::get('/dashboard', function() {
 // Check Slug Product
 Route::get('/dashboard/products/checkSlug', [AdminProductController::class, 'checkSlug'])->middleware('auth');
 
+// Get Platform Product
+Route::get('/dashboard/products/platform/{product:slug}', [AdminProductController::class, 'getPlatform'])->middleware('auth');
+
 Route::resource('/dashboard/products', AdminProductController::class)->middleware('auth');
 
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except(['show', 'edit', 'update'])->middleware('auth');
 
-Route::resource('/dashboard/stock', AdminStockController::class)->except('show')->middleware('auth');
+// Route::resource('/dashboard/stock', AdminStockController::class)->middleware('auth');
 
-Route::resource('/dashboard/platform', AdminPlatformController::class)->except('shoe')->middleware('auth');
+Route::controller(AdminStockController::class)->group(function () {
+    Route::get('/dashboard/stock', 'index');
+    Route::post('/dashboard/stock', 'store');
+    Route::get('/dashboard/stock/{product:slug}', 'show');
+    Route::get('/dashboard/stock/{stock:id}/edit', 'edit');
+    Route::put('/dashboard/stock', 'update');
+    Route::delete('/dashboard/stock/{stock:id}', 'destroy');
+})->middleware('auth');
+
+Route::resource('/dashboard/platform', AdminPlatformController::class)->except('show')->middleware('auth');

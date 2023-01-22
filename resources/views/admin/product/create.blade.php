@@ -41,7 +41,7 @@
                         </label>
                     </div>
                 @endforeach
-                @error('platform')
+                @error('platform_id')
                     <p class="text-danger"><small>{{ $message }}</small></p>
                 @enderror
             </div>

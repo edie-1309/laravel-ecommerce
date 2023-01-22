@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('container')
-<div class="d-flex justify-content-center">
-    <div class="col-lg-6">
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-lg-4">
         <h2 class="mb-5 text-center fw-bolder">Login</h2>
 
         @if (session()->has('success'))
