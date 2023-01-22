@@ -9,7 +9,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProductTestController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminStockController;
-
+use App\Http\Controllers\ProductController;
 use App\Models\Product;
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +40,9 @@ Route::controller(RegisterController::class)->group(function () {
     Route::post('/register', 'store');
 });
 
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/product/{product:slug}', [ProductController::class, 'show']);
+
 Route::get('/dashboard', function() {
     return view('admin/dashboard', [
         'title' => 'Eazy Play! - Administrator'
@@ -55,8 +58,6 @@ Route::get('/dashboard/products/platform/{product:slug}', [AdminProductControlle
 Route::resource('/dashboard/products', AdminProductController::class)->middleware('auth');
 
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except(['show', 'edit', 'update'])->middleware('auth');
-
-// Route::resource('/dashboard/stock', AdminStockController::class)->middleware('auth');
 
 Route::controller(AdminStockController::class)->group(function () {
     Route::get('/dashboard/stock', 'index');

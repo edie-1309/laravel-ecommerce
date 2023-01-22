@@ -44,7 +44,7 @@ class AdminStockController extends Controller
             }
         }
 
-            Stock::create($validatedData);
+        Stock::create($validatedData);
 
         return back()->with('success', 'Stock has beed added');
     }

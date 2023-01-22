@@ -12,6 +12,8 @@ class Product extends Model
 
     protected $guarded = ['id'];
 
+    protected $with = ['category', 'stock', 'platform'];
+
     public function category()
     {
         return $this->belongsToMany(Category::class);

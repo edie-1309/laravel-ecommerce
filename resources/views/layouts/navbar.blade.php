@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg my-2">
+<nav class="navbar navbar-expand-lg py-4 shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold color-black" href="/">Eazy Play!</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,9 +6,9 @@
       </button>
 
       <div class="w-50 d-flex justify-content-center hstack gap-5">
-        <a href="" class="text-decoration-none text-dark fw-bold">Home</a>
+        <a href="/" class="text-decoration-none text-dark fw-bold">Home</a>
         <a href="" class="text-decoration-none text-dark fw-bold">About</a>
-        <a href="" class="text-decoration-none text-dark fw-bold">All Product</a>
+        <a href="/products" class="text-decoration-none text-dark fw-bold">All Product</a>
       </div>
       
       <div class="collapse navbar-collapse" id="navbarSupportedContent">

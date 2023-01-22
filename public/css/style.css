@@ -25,7 +25,29 @@
     border-radius: 6px;
 }
 
+.btn-check + .btn {
+    border-radius: 20px;
+}
+
+.btn-check:checked + .btn {
+	border-radius: 20px;
+	border: 1.5px solid #33b2fa;
+    color: white;
+    background-color: #33b2fa;
+}
+
 /* Utilities */
 .text-black {
     color: black;
+}
+
+.button-primary {
+    background-color: #33b2fa;
+    color: white;
+    font-weight: 800;
+    border: 2px solid #33b2fa;
+}
+
+.bg-blue {
+    background-color: #33b2fa;
 }
