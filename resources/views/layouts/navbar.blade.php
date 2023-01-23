@@ -14,7 +14,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 hstack gap-3">
           <li class="nav-item">
-            <a href="" class="nav-link"><i class="bi bi-cart4"></i></a>
+            <a href="{{ route('cart') }}" class="nav-link"><i class="bi bi-cart4"></i></a>
           </li>
           @auth
             <li class="nav-item">

@@ -7,7 +7,7 @@
               <div class="col-md-4">
                 <img src="{{ asset('storage') . '/' . $product->image }}" class="img-fluid rounded-start">
               </div>
-              <div class="col-md-8 p-4">
+              <div class="col-md-8 px-5">
                   <h3 class="fw-semibold">{{ $product->name }}</h3>
                   <p>{!! $product->description !!}</p>
 
@@ -26,8 +26,9 @@
                       @endforeach
                   </div>
 
-                  <p class="d-inline-block text-dark fw-semibold">
-                    Price : {{ $product->price }}
+                  <p class="fw-semibold">Price : </p>
+                  <p class="fw-semibold mb-3">
+                    @currency($product->price)
                   </p>
 
                   <button type="submit" class="py-2 px-3 button-primary rounded-2 d-block">Add To Cart</button>

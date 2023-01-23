@@ -36,6 +36,40 @@
     background-color: #33b2fa;
 }
 
+.qty > label {
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+.qty input {
+    width: 80px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid rgb(203, 203, 203);
+}
+
+.button-cart a {
+    padding: 10px 15px;
+    background-color: #33b2fa;
+    color: white;
+    font-weight: 800;
+    border: 2px solid #33b2fa;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.button-cart a:nth-child(2) {
+    padding: 10px 15px;
+    background-color: #ff2e2e;
+    color: white;
+    font-weight: 800;
+    border: 2px solid #ff2e2e;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 5px;
+}
+
 /* Utilities */
 .text-black {
     color: black;
