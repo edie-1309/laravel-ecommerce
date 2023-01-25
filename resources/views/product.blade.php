@@ -8,30 +8,41 @@
                 <img src="{{ asset('storage') . '/' . $product->image }}" class="img-fluid rounded-start">
               </div>
               <div class="col-md-8 px-5">
-                  <h3 class="fw-semibold">{{ $product->name }}</h3>
-                  <p>{!! $product->description !!}</p>
+                  <form action="{{ route('insert.cart') }}" method="post" class="d-inline">
+                    @csrf
+                    <h3 class="fw-semibold">{{ $product->name }}</h3>
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-                  <p class="fw-semibold">Genre : </p>
-                  <p class="mb-5">
-                    @foreach ($product->category as $category)
-                        <small class="badge bg-blue">{{ $category->name }}</small>
-                    @endforeach
-                  </p>
+                    <p>{!! $product->description !!}</p>
 
-                  <div class="d-block mb-5">
-                      <p class="fw-semibold">Platform : </p>
-                      @foreach ($product->platform as $platform)
-                        <input type="radio" class="btn-check" name="platform" id="option{{ $platform->id }}" autocomplete="off" checked>
-                        <label class="btn fw-semibold" for="option{{ $platform->id }}">{{ $platform->name }}</label>
+                    <p class="fw-semibold">Genre : </p>
+                    <p class="mb-5">
+                      @foreach ($product->category as $category)
+                          <small class="badge bg-blue">{{ $category->name }}</small>
                       @endforeach
-                  </div>
+                    </p>
 
-                  <p class="fw-semibold">Price : </p>
-                  <p class="fw-semibold mb-3">
-                    @currency($product->price)
-                  </p>
+                    <div class="d-block mb-5">
+                        <p class="fw-semibold">Platform : </p>
+                        @foreach ($product->platform as $platform)
+                          <input type="radio" class="btn-check" name="platform_id" value="{{ $platform->id }}" id="option{{ $platform->id }}" autocomplete="off" checked>
+                          <label class="btn fw-semibold" for="option{{ $platform->id }}">{{ $platform->name }}</label>
+                        @endforeach
+                    </div>
 
-                  <button type="submit" class="py-2 px-3 button-primary rounded-2 d-block">Add To Cart</button>
+                    <div class="mb-5">
+                      <label for="" class="fw-semibold d-block mb-2">Qty : </label>
+                      <input type="number" name="qty" class="qty-input" min="1" value="1">
+                    </div>
+
+                    <p class="fw-semibold">Price : </p>
+                    <p class="fw-semibold mb-3">
+                      @currency($product->price)
+                      <input type="hidden" name="total" value="{{ $product->price }}">
+                    </p>
+                  
+                    <button type="submit" class="py-2 px-3 button-primary rounded-5 d-block">Add To Cart</button>
+                  </form>
               </div>
             </div>
         </div>

@@ -24,6 +24,11 @@ class Platform extends Model
         return $this->belongsTo(Stock::class);
     }
 
+    public function cart()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';

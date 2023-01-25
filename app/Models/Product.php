@@ -29,6 +29,11 @@ class Product extends Model
         return $this->belongsToMany(Platform::class, 'product_platform')->withTimestamps();
     }
 
+    public function cart()
+    {
+        return $this->hashMany(Cart::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';

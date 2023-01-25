@@ -45,7 +45,10 @@ Route::get('/products', [ProductController::class, 'index']);
 Route::get('/product/{product:slug}', [ProductController::class, 'show']);
 
 Route::controller(CartController::class)->group(function () {
-    Route::get('/cart', 'index')->name('cart');
+    Route::get('/cart', 'index')->name('cart')->middleware('auth');
+    Route::post('/cart', 'store')->name('insert.cart')->middleware('auth');
+    Route::patch('/cart/update/{cart}', 'update')->middleware('auth');
+    Route::delete('/cart/delete/{cart}', 'destroy')->name('delete.cart')->middleware('auth');
 });
 
 Route::get('/dashboard', function() {
