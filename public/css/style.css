@@ -31,9 +31,9 @@
 
 .btn-check:checked + .btn {
 	border-radius: 20px;
-	border: 1.5px solid #33b2fa;
+	border: 1.5px solid #13005A;
     color: white;
-    background-color: #33b2fa;
+    background-color: #13005A;
 }
 
 .img-cart img {
@@ -59,10 +59,10 @@
 
 .button-cart button {
     padding: 10px 15px;
-    background-color: #33b2fa;
+    background-color: #13005A;
     color: white;
     font-weight: 800;
-    border: 2px solid #33b2fa;
+    border: 2px solid #13005A;
     border-radius: 25px;
     text-decoration: none;
     margin: 5px;
@@ -70,10 +70,10 @@
 
 .button-cart button:nth-child(3) {
     padding: 10px 15px;
-    background-color: #ff2e2e;
+    background-color: #FB2576;
     color: white;
     font-weight: 800;
-    border: 2px solid #ff2e2e;
+    border: 2px solid #FB2576;
     border-radius: 25px;
     text-decoration: none;
     margin: 5px;
@@ -82,10 +82,10 @@
 .checkout-button {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #33b2fa;
+    background-color: #13005A;
     color: white;
     font-weight: 800;
-    border: 2px solid #33b2fa;
+    border: 2px solid #13005A;
     border-radius: 25px;
     text-decoration: none;
     margin: 5px;
@@ -94,13 +94,9 @@
 .total {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #33b2fa;
-    color: white;
+    color: #13005A;
     font-weight: 800;
-    border: 2px solid #33b2fa;
-    border-radius: 25px;
-    text-decoration: none;
-    margin: 5px;
+    margin: 6px;
 }
 
 /* Utilities */
@@ -109,12 +105,12 @@
 }
 
 .button-primary {
-    background-color: #33b2fa;
+    background-color: #13005A;
     color: white;
     font-weight: 800;
-    border: 2px solid #33b2fa;
+    border: 2px solid #13005A;
 }
 
 .bg-blue {
-    background-color: #33b2fa;
+    background-color: #13005A;
 }

@@ -24,9 +24,12 @@ use App\Http\Controllers\AdminPlatformController;
 */
 
 Route::get('/', function () {
+    $playsation4 = Product::platformFilter('playstation-4')->get();
+    $playsation5 = Product::platformFilter('playstation-5')->get();
     return view('home', [
         'title' => 'Eazy Play! - Home',
-        'products' => Product::all()
+        'productsPlaysation4' => $playsation4,
+        'productsPlaysation5' => $playsation5
     ]);
 });
 

@@ -14,6 +14,13 @@ class Product extends Model
 
     protected $with = ['category', 'stock', 'platform'];
 
+    public function scopePlatformFilter($query, $platform)
+    {
+        return $query->whereHas('platform', function ($query) use ($platform) {
+            $query->where('slug', $platform);
+        });
+    }
+
     public function category()
     {
         return $this->belongsToMany(Category::class);

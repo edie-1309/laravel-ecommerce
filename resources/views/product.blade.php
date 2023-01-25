@@ -18,7 +18,7 @@
                     <p class="fw-semibold">Genre : </p>
                     <p class="mb-5">
                       @foreach ($product->category as $category)
-                          <small class="badge bg-blue">{{ $category->name }}</small>
+                          <small class="badge bg-blue py-2 px-3 rounded-4">{{ $category->name }}</small>
                       @endforeach
                     </p>
 
@@ -41,7 +41,7 @@
                       <input type="hidden" name="total" value="{{ $product->price }}">
                     </p>
                   
-                    <button type="submit" class="py-2 px-3 button-primary rounded-5 d-block">Add To Cart</button>
+                    <button type="submit" class="py-2 px-4 button-primary rounded-5 d-block">Add To Cart</button>
                   </form>
               </div>
             </div>
