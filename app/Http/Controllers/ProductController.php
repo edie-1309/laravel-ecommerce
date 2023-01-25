@@ -9,9 +9,16 @@ class ProductController extends Controller
 {
     public function index()
     {
+        if(request('search'))
+        {
+            $products = Product::searchFilter(request('search'))->paginate(12)->withQueryString();
+        }else{
+            $products = Product::paginate(12);
+        }
+
         return view('products', [
             'title' => 'Eazy Play! - All Games',
-            'products' => Product::all()
+            'products' => $products
         ]);
     }
 

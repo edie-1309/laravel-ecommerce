@@ -40,8 +40,10 @@
             </li>
           @endauth
           <li>
-            <input type="text" class="rounded-4 border border-1 px-3 py-1 w-75" placeholder="Search" style="font-size: 12px">
-            <button type="submit" class="border-0 bg-transparent mx-3"><i class="bi bi-search"></i></button>
+            <form action="/products">
+              <input type="text" class="rounded-4 border border-1 px-3 py-1 w-75" name="search" value="{{ request('search') }}" placeholder="Search" style="font-size: 12px">
+              <button type="submit" class="border-0 bg-transparent mx-3"><i class="bi bi-search"></i></button>
+            </form>
           </li>
         </ul>
       </div>

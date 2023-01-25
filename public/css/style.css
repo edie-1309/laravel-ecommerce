@@ -99,6 +99,22 @@
     margin: 6px;
 }
 
+.active > .page-link, .page-link.active {
+    background-color: #13005A;
+    border-color: #13005A;
+    font-weight: 700;
+}
+
+span.page-link {
+    background-color: #13005A;
+    font-weight: 700;
+}
+
+a.page-link {
+    color: #13005A;
+    font-weight: 700;
+}
+
 /* Utilities */
 .text-black {
     color: black;
