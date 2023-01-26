@@ -24,13 +24,13 @@
 
                     <div class="d-block mb-5">
                         <p class="fw-semibold">Platform : </p>
-                        @foreach ($product->platform as $platform)
-                          <input type="radio" class="btn-check" name="platform_id" value="{{ $platform->id }}" id="option{{ $platform->id }}" autocomplete="off" checked>
-                          <label class="btn fw-semibold" for="option{{ $platform->id }}">{{ $platform->name }}</label>
+                        @foreach ($product->stock as $stock)
+                            <input type="radio" class="btn-check" name="platform_id" value="{{ $stock->platform->id }}" id="option{{ $stock->platform->id }}" autocomplete="off">
+                            <label class="btn fw-semibold" for="option{{ $stock->platform->id }}">{{ $stock->platform->name }}</label>
                         @endforeach
                     </div>
 
-                    <div class="mb-5">
+                    <div class="mb-5" id="qty">
                       <label for="" class="fw-semibold d-block mb-2">Qty : </label>
                       <input type="number" name="qty" class="qty-input" min="1" value="1">
                     </div>
@@ -41,10 +41,43 @@
                       <input type="hidden" name="total" value="{{ $product->price }}">
                     </p>
                   
-                    <button type="submit" class="py-2 px-4 button-primary rounded-5 d-block">Add To Cart</button>
+                    <button type="submit" class="py-2 px-4 button-primary rounded-5 d-block" id="button-cart">Add to cart</button>
                   </form>
               </div>
             </div>
         </div>
     </div>
+
+    <script>
+      $(document).ready(function () {
+        let input = $('input[name=platform_id]');
+
+        input.each(function() {
+          let id = $(this);
+
+          id.click(function() {
+            let platform_id = id.val();
+            let product_id = $('input[name=product_id]').val();
+
+            $.ajax({
+              url: 'http://localhost:8000/product/checkStock/' + product_id + '/' + platform_id,
+              type: 'GET',
+              dataType: 'json',
+              success: function(result) {
+                if(result.stock > 0)
+                {
+                  $('#button-cart').html('Add to cart');
+                  $('#button-cart').removeAttr("disabled", "disabled");
+                  $('#qty').show();
+                }else{
+                  $('#button-cart').html('Sold Out');
+                  $('#button-cart').attr("disabled", "disabled");
+                  $('#qty').hide();
+                }
+              }
+            });
+          });
+        });
+      });
+    </script>
 @endsection

@@ -8,7 +8,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminStockController;
-use App\Http\Controllers\ProductTestController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminPlatformController;
@@ -67,6 +66,9 @@ Route::get('/dashboard/products/checkSlug', [AdminProductController::class, 'che
 Route::get('/dashboard/products/platform/{product:slug}', [AdminProductController::class, 'getPlatform'])->middleware('auth');
 
 Route::resource('/dashboard/products', AdminProductController::class)->middleware('auth');
+
+// Get Stock Product
+Route::get('/product/checkStock/{product:id}/{platform:id}', [ProductController::class, 'checkStock'])->withoutScopedBindings();
 
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except(['show', 'edit', 'update'])->middleware('auth');
 
