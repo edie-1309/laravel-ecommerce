@@ -25,8 +25,10 @@
                     <div class="d-block mb-5">
                         <p class="fw-semibold">Platform : </p>
                         @foreach ($product->stock as $stock)
-                            <input type="radio" class="btn-check" name="platform_id" value="{{ $stock->platform->id }}" id="option{{ $stock->platform->id }}" autocomplete="off">
-                            <label class="btn fw-semibold" for="option{{ $stock->platform->id }}">{{ $stock->platform->name }}</label>
+                            @if ($stock->stock > 0)
+                              <input type="radio" class="btn-check" name="platform_id" value="{{ $stock->platform->id }}" id="option{{ $stock->platform->id }}" autocomplete="off" checked>
+                              <label class="btn fw-semibold" for="option{{ $stock->platform->id }}">{{ $stock->platform->name }}</label>
+                            @endif
                         @endforeach
                     </div>
 

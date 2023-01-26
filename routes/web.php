@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminStockController;
@@ -23,8 +24,8 @@ use App\Http\Controllers\AdminPlatformController;
 */
 
 Route::get('/', function () {
-    $playsation4 = Product::platformFilter('playstation-4')->get();
-    $playsation5 = Product::platformFilter('playstation-5')->get();
+    $playsation4 = Product::platformFilter('playstation-4')->limit(3)->get();
+    $playsation5 = Product::platformFilter('playstation-5')->limit(3)->get();
     return view('home', [
         'title' => 'Eazy Play! - Home',
         'productsPlaysation4' => $playsation4,
@@ -52,6 +53,8 @@ Route::controller(CartController::class)->group(function () {
     Route::patch('/cart/update/{cart}', 'update')->middleware('auth');
     Route::delete('/cart/delete/{cart}', 'destroy')->name('delete.cart')->middleware('auth');
 });
+
+Route::get('/orders', [OrderController::class, 'index'])->middleware('auth');
 
 Route::get('/dashboard', function() {
     return view('admin/dashboard', [
