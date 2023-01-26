@@ -99,6 +99,17 @@
     margin: 6px;
 }
 
+.status {
+    display: inline-block;
+    background-color: #cfe2ff;
+    color: #0a58ca;
+    border: 1px solid #9ec5fe;
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .active > .page-link, .page-link.active {
     background-color: #13005A;
     border-color: #13005A;

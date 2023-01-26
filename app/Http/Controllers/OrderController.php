@@ -12,4 +12,11 @@ class OrderController extends Controller
             'title' => 'Orders - ' . auth()->user()->name
         ]);
     }
+
+    public function detail()
+    {
+        return view('order-detail', [
+            'title' => 'Order detail'
+        ]);
+    }
 }

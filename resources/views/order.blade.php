@@ -37,7 +37,7 @@
             </div>
             <div class="d-flex justify-content-end align-items-baseline">
                 <p class="mx-3 fw-bold">Total : Rp. 1.200.00</p>
-                <button class="btn btn-primary py-2 px-3 fw-bold rounded-5">Detail</button>
+                <a href="/order-detail" class="btn btn-primary py-2 px-3 fw-bold rounded-5">Detail</a>
             </div>
         </div>
         <div class="p-3 mb-3 rounded-3 border border-1">

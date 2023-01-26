@@ -55,6 +55,7 @@ Route::controller(CartController::class)->group(function () {
 });
 
 Route::get('/orders', [OrderController::class, 'index'])->middleware('auth');
+Route::get('/order-detail', [OrderController::class, 'detail'])->middleware('auth');
 
 Route::get('/dashboard', function() {
     return view('admin/dashboard', [
