@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminStockController;
 use App\Http\Controllers\AdminProductController;
@@ -54,8 +55,13 @@ Route::controller(CartController::class)->group(function () {
     Route::delete('/cart/delete/{cart}', 'destroy')->name('delete.cart')->middleware('auth');
 });
 
+Route::get('/checkout', [CheckoutController::class, 'index'])->middleware('auth');
+Route::post('/checkout', [CheckoutController::class, 'store'])->middleware('auth');
+
 Route::get('/orders', [OrderController::class, 'index'])->middleware('auth');
-Route::get('/order-detail', [OrderController::class, 'detail'])->middleware('auth');
+Route::delete('/orders/{order:id}', [OrderController::class, 'destroy'])->middleware('auth');
+
+Route::get('/order-detail/{order:slug}', [OrderController::class, 'detail'])->middleware('auth');
 
 Route::get('/dashboard', function() {
     return view('admin/dashboard', [

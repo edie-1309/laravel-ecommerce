@@ -29,6 +29,11 @@ class Platform extends Model
         return $this->hasMany(Cart::class);
     }
 
+    public function order_detail()
+    {
+        return $this->hasMany(OrderDetail::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';

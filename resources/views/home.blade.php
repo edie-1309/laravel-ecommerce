@@ -12,9 +12,11 @@
                 <div class="list-games row justify-content-start">
                     @foreach ($productsPlaysation4 as $product)
                         <div class="col-md-4 d-flex justify-content-center mb-5">
-                            <div class="image-product overflow-hidden">
-                                <img src="{{ asset('storage') . '/' . $product->image }}" class="card-img-top" alt="{{ $product->slug }}">
-                            </div>
+                            <a href="/product/{{ $product->slug }}">
+                                <div class="image-product overflow-hidden">
+                                    <img src="{{ asset('storage') . '/' . $product->image }}" class="card-img-top" alt="{{ $product->slug }}">
+                                </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>
@@ -23,9 +25,11 @@
                 <div class="list-games row justify-content-start">
                     @foreach ($productsPlaysation5 as $product)
                         <div class="col-md-4 d-flex justify-content-center mb-5">
-                            <div class="image-product overflow-hidden">
-                                <img src="{{ asset('storage') . '/' . $product->image }}" class="card-img-top" alt="{{ $product->slug }}">
-                            </div>
+                            <a href="/product/{{ $product->slug }}">
+                                <div class="image-product overflow-hidden">
+                                    <img src="{{ asset('storage') . '/' . $product->image }}" class="card-img-top" alt="{{ $product->slug }}">
+                                </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>
