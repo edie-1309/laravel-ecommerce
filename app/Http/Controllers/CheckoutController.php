@@ -42,6 +42,6 @@ class CheckoutController extends Controller
         // Destroy cart
         Cart::where('user_id', auth()->user()->id)->delete();
 
-        return to_route('cart');
+        return redirect('orders')->with('success', 'Order in progress');
     }
 }
