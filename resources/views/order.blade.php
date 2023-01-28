@@ -33,5 +33,9 @@
                 </div>
             </div>
         @endforeach
+
+        @if ($orders->isEmpty())
+            <p class="fw-bold my-5 text-center">Order Empty</p>
+        @endif
     </div>
 @endsection

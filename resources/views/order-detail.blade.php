@@ -12,10 +12,10 @@
             <div class="p-3 flex-grow-1">
                 <h4 class="fw-semibold">{{ $order_detail->product->name }}</h4>
                 <p class="text-muted">{{ $order_detail->platform->name }}</p>
+                <p class="fw-semibold">@currency($order_detail->product->price)</p>
             </div>
 
             <div class="d-flex flex-column justify-content-center px-5">
-                <p class="fw-semibold">@currency($order_detail->product->price)</p>
                 <p class="fw-semibold">{{ $order_detail->qty }} Pcs</p>
             </div>
         </div>
@@ -31,7 +31,20 @@
             <p class="d-inline fw-semibold">Status : </p>
             <div class="status">{{ $order->status }}</div>
             <p class="fw-semibold mt-3">Total : @currency($order->total)</p>
-            <a href="#" class="btn btn-danger rounded-5 fw-bold" data-bs-toggle="modal" data-bs-target="#deleteModal">Cancel Order</a>
+            @if ($order->status == "On Process")
+                <a href="#" class="btn btn-danger rounded-5 fw-bold" data-bs-toggle="modal" data-bs-target="#deleteModal">Cancel Order</a>
+            @endif
+
+            @if ($order->status == "On Delivery")
+                <form action="/orders/confirm-status/{{ $order->id }}" method="post">
+                    @csrf
+                    @method('put')
+                    <input type="hidden" name="status" value="Already Received">
+
+                    <button type="submit" class="btn btn-primary rounded-5 px-4 fw-bold  mb-3">Package Received</button>
+                </form>
+                <p class="text-muted"><small>Please confirm if the package has arrived, with the click of a button "Package Received"</small></p>
+            @endif
         </div>
     </div>
 

@@ -12,6 +12,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminStockController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminPlatformController;
 /*
 |--------------------------------------------------------------------------
@@ -59,9 +60,12 @@ Route::get('/checkout', [CheckoutController::class, 'index'])->middleware('auth'
 Route::post('/checkout', [CheckoutController::class, 'store'])->middleware('auth');
 
 Route::get('/orders', [OrderController::class, 'index'])->middleware('auth');
+Route::get('/order-detail/{order:slug}', [OrderController::class, 'detail'])->middleware('auth');
+Route::put('/orders/confirm-status/{order:id}', [OrderController::class, 'confirm_status'])->middleware('auth');
 Route::delete('/orders/{order:id}', [OrderController::class, 'destroy'])->middleware('auth');
 
-Route::get('/order-detail/{order:slug}', [OrderController::class, 'detail'])->middleware('auth');
+Route::get('/history', [OrderController::class, 'history'])->middleware('auth');
+Route::get('/history-detail/{order:slug}', [OrderController::class, 'history_detail'])->middleware('auth');
 
 Route::get('/dashboard', function() {
     return view('admin/dashboard', [
@@ -92,3 +96,7 @@ Route::controller(AdminStockController::class)->group(function () {
 })->middleware('auth');
 
 Route::resource('/dashboard/platform', AdminPlatformController::class)->except('show')->middleware('auth');
+
+Route::get('/dashboard/orders', [AdminOrderController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/orders/detail/{order:slug}', [AdminOrderController::class, 'show'])->middleware('auth');
+Route::put('/dashboard/orders/update-status/{order:id}', [AdminOrderController::class, 'update_status'])->middleware('auth');
