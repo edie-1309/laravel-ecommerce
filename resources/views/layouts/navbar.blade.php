@@ -23,7 +23,10 @@
                   {{ auth()->user()->name }}
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+                  @can('admin')
+                    <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+                  @endcan
+                  <li><a class="dropdown-item" href="/user-profile">Profile Detail</a></li>
                   <li><a class="dropdown-item" href="/orders">Order</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li>

@@ -37,8 +37,8 @@
                     </div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="/register" class="d-block mt-3">Register</a>
+            <button type="submit" class="btn btn-primary rounded-5 fw-bold">Login</button>
+            <a href="/register" class="ms-2 text-decoration-none fw-semibold">Register</a>
         </form>
     </div>
 </div>

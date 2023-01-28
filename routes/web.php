@@ -4,15 +4,16 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminStockController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCategoryController;
-use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminPlatformController;
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,9 @@ Route::controller(RegisterController::class)->group(function () {
     Route::post('/register', 'store');
 });
 
+Route::get('/user-profile', [UserController::class, 'index'])->middleware('auth');
+Route::get('/update-profile', [UserController::class, 'update_profile'])->middleware('auth');
+
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/product/{product:slug}', [ProductController::class, 'show']);
 
@@ -71,7 +75,7 @@ Route::get('/dashboard', function() {
     return view('admin/dashboard', [
         'title' => 'Eazy Play! - Administrator'
     ]);
-})->middleware('auth'); 
+})->middleware('admin'); 
 
 // Check Slug Product
 Route::get('/dashboard/products/checkSlug', [AdminProductController::class, 'checkSlug'])->middleware('auth');
