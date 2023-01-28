@@ -56,8 +56,8 @@
             </div>
             <div class="mb-3">
                 <label for="confirm_password" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control @error('confirm_password') is-invalid @enderror" id="confirm_password" name="confirm_password">
-                @error('confirm_password')
+                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="confirm_password" name="password_confirmation">
+                @error('password_confirmation')
                     <div id="floatingNameFeedback" class="invalid-feedback">
                         {{ $message }}
                     </div>
