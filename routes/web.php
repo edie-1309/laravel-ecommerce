@@ -47,8 +47,9 @@ Route::controller(RegisterController::class)->group(function () {
     Route::post('/register', 'store');
 });
 
-Route::get('/user-profile', [UserController::class, 'index'])->middleware('auth');
-Route::get('/update-profile', [UserController::class, 'update_profile'])->middleware('auth');
+Route::get('/user-profile/{user:username}', [UserController::class, 'index'])->middleware('auth');
+Route::get('/edit-profile/{user:username}', [UserController::class, 'edit_profile'])->middleware('auth');
+Route::put('/update-profile/{user:id}', [UserController::class, 'update_profile'])->middleware('auth');
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/product/{product:slug}', [ProductController::class, 'show']);

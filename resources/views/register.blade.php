@@ -27,8 +27,7 @@
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" aria-describedby="emailHelp" value="
-                {{ old('email') }}">
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" aria-describedby="emailHelp" value="{{ old('email') }}">
                 @error('email')
                     <div id="floatingNameFeedback" class="invalid-feedback">
                         {{ $message }}
@@ -37,8 +36,7 @@
             </div>
             <div class="mb-3">
                 <label for="phone_number" class="form-label">Phone Number</label>
-                <input type="text" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" value="
-                {{ old('phone_number') }}">
+                <input type="text" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" value="{{ old('phone_number') }}">
                 @error('phone_number')
                     <div id="floatingNameFeedback" class="invalid-feedback">
                         {{ $message }}
@@ -64,8 +62,11 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="addredd" class="form-label">Address</label>
-                <textarea class="form-control" name="address" id="address" rows="3"></textarea>
+                <label for="address" class="form-label">Address</label>
+                <textarea class="form-control" name="address" id="address" rows="3">{{ old('address') }}</textarea>
+                @error('address')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>            
             <button type="submit" class="btn btn-primary rounded-5 fw-bold">Register</button>
             <a href="/login" class="ms-2 text-decoration-none fw-semibold">Login</a>

@@ -110,6 +110,17 @@
     font-weight: 500;
 }
 
+.img-profile {
+    width: 200px; 
+    height: 200px; 
+    border-radius: 50%; 
+    border: 3px solid #1c1c1c; 
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .active > .page-link, .page-link.active {
     background-color: #13005A;
     border-color: #13005A;
