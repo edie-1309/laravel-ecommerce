@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -48,5 +49,33 @@ class UserController extends Controller
         User::where('id', $user->id)->update($validatedData);
 
         return redirect('user-profile/' . $request->username)->with('success', 'User profile has been updated!');
+    }
+
+    public function change_password()
+    {
+        return view('change-password', [
+            'title' => 'Change Password'
+        ]);
+    }
+
+    public function update_password(Request $request, User $user)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required'
+        ]);
+
+        if (Hash::check($request->current_password , $user->password)) {
+            
+            $new_password = Hash::make($request->new_password);
+
+            User::where('id', $user->id)->update([
+                'password' => $new_password
+            ]);
+
+            return redirect('user-profile/' . $user->username)->with('success', 'Password has been changed!');
+        }else{
+            return back()->with('fail', "Password doesn't match!");
+        }
     }
 }
