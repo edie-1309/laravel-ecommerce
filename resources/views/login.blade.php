@@ -37,8 +37,9 @@
                     </div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary rounded-5 fw-bold">Login</button>
-            <a href="/register" class="ms-2 text-decoration-none fw-semibold">Register</a>
+            <button type="submit" class="d-block mb-3 btn btn-primary rounded-5 fw-bold">Login</button>
+            <a href="/register" class="d-block mb-2 text-decoration-none fw-semibold font-small">Register</a>
+            <a href="/forgot-password" class="text-decoration-none fw-semibold font-small">Forgot Password</a>
         </form>
     </div>
 </div>

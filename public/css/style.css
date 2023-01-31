@@ -152,3 +152,7 @@ a.page-link {
 .bg-blue {
     background-color: #13005A;
 }
+
+.font-small {
+    font-size: 12px;
+}

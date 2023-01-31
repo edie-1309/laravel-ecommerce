@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminStockController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminPlatformController;
+use App\Http\Controllers\ForgotPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +53,11 @@ Route::get('/edit-profile/{user:username}', [UserController::class, 'edit_profil
 Route::put('/update-profile/{user:id}', [UserController::class, 'update_profile'])->middleware('auth');
 Route::get('/change-password', [UserController::class, 'change_password'])->middleware('auth');
 Route::put('/update-password/{user:id}', [UserController::class, 'update_password'])->middleware('auth');
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->middleware('guest')->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'send_email'])->middleware('guest')->name('password.email');
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'reset_password'])->middleware('guest')->name('password.reset');
+ROute::post('/reset-password', [ForgotPasswordController::class, 'update_password'])->middleware('guest')->name('password.update');
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/product/{product:slug}', [ProductController::class, 'show']);
