@@ -19,6 +19,9 @@
                     <div class="p-3 flex-grow-1">
                         <h4 class="fw-semibold">{{ $order_detail->product->name }}</h4>
                         <p class="text-muted">{{ $order_detail->platform->name }}</p>
+                        @if ($order_detail->product->discount_id)
+                            <p class="fw-semibold"><strike>@original_price($order_detail->product->price,$order_detail->product->discount->discount)</strike></p>
+                        @endif
                         <p class="fw-semibold">@currency($order_detail->product->price)</p>
                     </div>
 
@@ -29,7 +32,7 @@
             @endforeach
             <div class="d-flex justify-content-end align-items-baseline">
                 <p class="mx-3 fw-bold">Total : @currency($order->total)</p>
-                <a href="/history-detail/{{ $order->slug }}" class="btn btn-primary py-2 px-3 fw-bold rounded-5">Detail</a>
+                <a href="/history-detail/{{ $order->slug }}" class="btn button-primary py-2 px-3 fw-bold rounded-5">Detail</a>
             </div>
         </div>
     @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Discount;
 use App\Models\Platform;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -34,7 +35,8 @@ class AdminProductController extends Controller
         return view('admin/product/create', [
             'title' => 'Create product',
             'categories' => Category::all(),
-            'platform' => Platform::all()
+            'platform' => Platform::all(),
+            'discount' => Discount::all()
         ]);
     }
 
@@ -51,6 +53,7 @@ class AdminProductController extends Controller
             'name' => 'required|max:255',
             'category_id' => 'required',
             'platform_id' => 'required',
+            'discount_id' => 'nullable',
             'description' => 'required',
             'price' => 'required|numeric',
             'image' => 'image'
@@ -62,6 +65,16 @@ class AdminProductController extends Controller
         if($request->file('image'))
         {
             $validatedDataProduct['image'] = $request->file('image')->store('product-image');
+        }
+
+        if($request->discount_id !== NULL)
+        {
+            $discount = Discount::where('id', $request->discount_id)->first('discount');
+            $discount_price = $request->price * $discount->discount / 100;
+
+            $price = $request->price - $discount_price;
+
+            $validatedDataProduct['price'] = $price;
         }
 
         $validatedDataProduct['slug'] = SlugService::createSlug(Product::class, 'slug', $request->name);
@@ -107,7 +120,8 @@ class AdminProductController extends Controller
             'title' => 'Edit Product',
             'product' => $product,
             'categories' => Category::all(),
-            'platform' => Platform::all()
+            'platform' => Platform::all(),
+            'discount' => Discount::all()
         ]);
     }
 
@@ -125,6 +139,7 @@ class AdminProductController extends Controller
             'name' => 'required|max:255',
             'description' => 'required',
             'price' => 'required|numeric',
+            'discount_id' => 'nullable',
             'image' => 'image'
         ];
 
@@ -153,6 +168,24 @@ class AdminProductController extends Controller
             }
             
             $validatedDataProduct['image'] = $request->file('image')->store('product-image');
+        }
+
+        if($request->discount_id !== NULL)
+        {
+            $discount = Discount::where('id', $request->discount_id)->first('discount');
+
+            if($request->discount_id == $product->discount_id && $request->price == $product->price)
+            {
+                $validatedDataProduct['price'] = $request->price;
+                
+            }else{
+
+                $discount_price = $request->price * $discount->discount / 100;
+    
+                $price = $request->price - $discount_price;
+    
+                $validatedDataProduct['price'] = $price;
+            }
         }
         
         Product::where('id', $product->id)->update($validatedDataProduct);

@@ -12,6 +12,9 @@
             <div class="p-3 flex-grow-1">
                 <h4 class="fw-semibold">{{ $order_detail->product->name }}</h4>
                 <p class="text-muted">{{ $order_detail->platform->name }}</p>
+                @if ($order_detail->product->discount_id)
+                    <p class="fw-semibold"><strike>@original_price($order_detail->product->price,$order_detail->product->discount->discount)</strike></p>
+                @endif
                 <p class="fw-semibold">@currency($order_detail->product->price)</p>
             </div>
 
@@ -25,7 +28,7 @@
     <div class="p-3 d-flex justify-content-between">
         <div class="w-50 pr-3">
             <h5 class="fw-semibold">Address</h5>
-            <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, sint obcaecati impedit libero hic eum aspernatur quo necessitatibus amet placeat illo, at magnam natus voluptas harum velit? Vel nobis dolorum aspernatur atque, laudantium illum quam officia maxime placeat odio sapiente ex! Impedit nesciunt fuga repellat corporis ipsum in harum vero.</p>
+            <p class="text-muted">{{ auth()->user()->address }}</p>
         </div>
         <div class="p-3 border-start flex-fill">
             <p class="d-inline fw-semibold">Status : </p>
@@ -48,7 +51,7 @@
         </div>
     </div>
 
-    <a href="/orders" class="btn btn-primary rounded-5 fw-bold">Back</a>
+    <a href="/orders" class="btn button-primary rounded-5 fw-bold">Back</a>
 </div>
 
 <!-- Modal -->

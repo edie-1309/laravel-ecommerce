@@ -34,7 +34,7 @@
                     </div>
                     @endforeach
                   </td>
-                  <td>{{ $product->price }}</td>
+                  <td>@currency($product->price)</td>
                   <td>
                     <a href="/dashboard/products/{{ $product->slug }}" class="badge bg-success text-decoration-none">Detail</a>
                     <a href="/dashboard/products/{{ $product->slug }}/edit" class="badge bg-primary text-decoration-none">Update</a>

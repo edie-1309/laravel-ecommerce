@@ -9,21 +9,21 @@
                     @csrf
                     <p class="card-text">
                         <div>
-                            <span class="fw-semibold">Nama</span>
+                            <span class="fw-semibold">Name</span>
                             <p class="text-muted">{{ auth()->user()->name }}</p>
                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                         </div>
                         <div class="w-85">
-                            <span class="fw-semibold">Alamat</span>
-                            <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, dolor error. Cumque id modi voluptatum provident, officia iusto numquam enim ipsum est culpa unde possimus iure ipsam maxime doloribus qui?</p>
+                            <span class="fw-semibold">Address</span>
+                            <p class="text-muted">{{ auth()->user()->address }}</p>
                         </div>
                         <div>
-                            <span class="fw-semibold">Metode Pembayaran</span>
+                            <span class="fw-semibold">Payment method</span>
                             <p class="text-muted">COD (Cash On Delivery)</p>
                             <input type="hidden" name="payment" value="COD">
                         </div>
                         <div class="mb-3">
-                            <span class="fw-semibold">Produk</span>
+                            <span class="fw-semibold">Products</span>
                             @foreach($data as $data)
                                 <p class="text-muted mb-0">{{ $data->product->name }} - {{ $data->platform->name }} ({{ $data->qty }} Pcs)</p>
                                 {{-- For Product Id --}}
@@ -37,7 +37,7 @@
                             @endforeach
                         </div>
                         <div>
-                            <span class="fw-semibold">Ongkir</span>
+                            <span class="fw-semibold">Shipping</span>
                             <p class="text-muted">Rp. 10.000</p>
                         </div>
                         <div>
@@ -46,7 +46,7 @@
                             <input type="hidden" name="total" value="{{ $data->sum('total') + 10000 }}">
                         </div>
                     </p>
-                    <button type="submit" class="btn btn-primary py-2 px-3 rounded-5 fw-bolder float-end">Continue</button>
+                    <button type="submit" class="btn button-primary py-2 px-3 rounded-5 fw-bolder float-end">Continue</button>
                 </form>
             </div>
         </div>       

@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminStockController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminDiscountController;
 use App\Http\Controllers\AdminPlatformController;
 use App\Http\Controllers\ForgotPasswordController;
 /*
@@ -87,17 +88,17 @@ Route::get('/dashboard', function() {
 })->middleware('admin'); 
 
 // Check Slug Product
-Route::get('/dashboard/products/checkSlug', [AdminProductController::class, 'checkSlug'])->middleware('auth');
+Route::get('/dashboard/products/checkSlug', [AdminProductController::class, 'checkSlug'])->middleware('admin');
 
 // Get Platform Product
-Route::get('/dashboard/products/platform/{product:slug}', [AdminProductController::class, 'getPlatform'])->middleware('auth');
+Route::get('/dashboard/products/platform/{product:slug}', [AdminProductController::class, 'getPlatform'])->middleware('admin');
 
-Route::resource('/dashboard/products', AdminProductController::class)->middleware('auth');
+Route::resource('/dashboard/products', AdminProductController::class)->middleware('admin');
 
 // Get Stock Product
 Route::get('/product/checkStock/{product:id}/{platform:id}', [ProductController::class, 'checkStock'])->withoutScopedBindings();
 
-Route::resource('/dashboard/categories', AdminCategoryController::class)->except(['show', 'edit', 'update'])->middleware('auth');
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except(['show', 'edit', 'update'])->middleware('admin');
 
 Route::controller(AdminStockController::class)->group(function () {
     Route::get('/dashboard/stock', 'index');
@@ -106,10 +107,14 @@ Route::controller(AdminStockController::class)->group(function () {
     Route::get('/dashboard/stock/{stock:id}/edit', 'edit');
     Route::put('/dashboard/stock', 'update');
     Route::delete('/dashboard/stock/{stock:id}', 'destroy');
-})->middleware('auth');
+})->middleware('admin');
 
-Route::resource('/dashboard/platform', AdminPlatformController::class)->except('show')->middleware('auth');
+Route::resource('/dashboard/platform', AdminPlatformController::class)->except('show')->middleware('admin');
 
-Route::get('/dashboard/orders', [AdminOrderController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/orders/detail/{order:slug}', [AdminOrderController::class, 'show'])->middleware('auth');
-Route::put('/dashboard/orders/update-status/{order:id}', [AdminOrderController::class, 'update_status'])->middleware('auth');
+Route::get('/dashboard/orders', [AdminOrderController::class, 'index'])->middleware('admin');
+Route::get('/dashboard/orders/detail/{order:slug}', [AdminOrderController::class, 'show'])->middleware('admin');
+Route::put('/dashboard/orders/update-status/{order:id}', [AdminOrderController::class, 'update_status'])->middleware('admin');
+
+Route::get('/dashboard/discount', [AdminDiscountController::class, 'index'])->middleware('admin');
+Route::post('/dashboard/discount', [AdminDiscountController::class, 'store'])->middleware('admin');
+Route::delete('/dashboard/discount/{discount}', [AdminDiscountController::class, 'destroy'])->middleware('admin');

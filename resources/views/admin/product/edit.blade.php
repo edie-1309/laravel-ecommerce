@@ -88,6 +88,16 @@
         </div>
 
         <div class="mb-3">
+            <label for="inputDiscount" class="form-label">Discount</label>
+            <select class="form-select @error('discount_id') is-invalid @enderror" name="discount_id" id="inputDiscount">
+                <option value="">Choose discount</option>
+                @foreach ($discount as $discount)
+                    <option value="{{ $discount->id }}" {{ (old('discount_id', $product->discount_id) == $discount->id) ? 'selected' : '' }}>{{ $discount->discount }}%</option>
+                @endforeach 
+            </select>
+        </div>
+
+        <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             @error('description')
                 <p class="text-danger"><small>{{ $message }}</small></p>           

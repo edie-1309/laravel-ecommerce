@@ -35,6 +35,11 @@
         <li>
             <a href="/dashboard/orders" class="{{ Request::is('dashboard/orders*') ? 'active' : '' }}">Order List</a>
         </li>
+        
+        <p>Discount</p>
+        <li>
+            <a href="/dashboard/discount" class="{{ Request::is('dashboard/discount*') ? 'active' : '' }}">Discount</a>
+        </li>
 
         <hr>
 

@@ -28,9 +28,24 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
 
         // Rupiah format
-        Blade::directive('currency', function ( $expression ) 
-        { 
-            return "Rp. <?php echo number_format($expression,0,',','.'); ?>"; 
+        Blade::directive('currency', function ($expression) 
+        {            
+            $price = "Rp. <?= number_format($expression,0,',','.'); ?>"; 
+            
+            return $price;
         });
+
+        // Before discount
+        Blade::directive('original_price', function ($expression) 
+        {            
+            $array = explode(',',$expression);
+
+            // $hasil = 100 / 100 - $discount * $harga;
+            $discount = "100 - $array[1]";
+            $price = "$array[0] * 100";
+            $before_discount = "intval($price) / intval($discount)";
+
+            return "Rp. <?= number_format($before_discount,0,',','.'); ?>";
+        });        
     }
 }

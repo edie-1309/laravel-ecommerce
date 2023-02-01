@@ -12,7 +12,10 @@
                     <div class="cart-product d-flex flex-column justify-content-center">
                         <h4 class="fw-bold">{{ $c->product->name }}</h4>
                         <p class="fw-semibold">{{ $c->platform->name }}</p>
-                        <p class="fw-semibold" id="product-price">@currency($c->product->price)</p>
+                        @if ($c->product->discount_id)
+                            <p class="fw-semibold"><strike>@original_price($c->product->price,$c->product->discount->discount)</strike></p>
+                        @endif
+                            <p class="fw-semibold" id="product-price">@currency($c->product->price)</p>
                     </div>
                     <div class="qty d-flex align-items-center mx-4">
                         <label for="qty" class="fw-semibold">Qty :</label>

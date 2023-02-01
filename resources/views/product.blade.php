@@ -11,6 +11,13 @@
                   <form action="{{ route('insert.cart') }}" method="post" class="d-inline">
                     @csrf
                     <h3 class="fw-semibold">{{ $product->name }}</h3>
+
+                    @if($product->discount_id) 
+                      <div class="d-inline-block bg-dark text-light py-1 px-2 fs-5 fw-bold">
+                        {{ $product->discount->discount }}% 
+                      </div>
+                    @endif
+
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
 
                     <p>{!! $product->description !!}</p>
@@ -38,12 +45,19 @@
                     </div>
 
                     <p class="fw-semibold">Price : </p>
-                    <p class="fw-semibold mb-3">
-                      @currency($product->price)
-                      <input type="hidden" name="total" value="{{ $product->price }}">
-                    </p>
-                  
-                    <button type="submit" class="py-2 px-4 button-primary rounded-5 d-block" id="button-cart">Add to cart</button>
+                    @if ($product->discount_id)
+                      <p class="fw-semibold"><strike>@original_price($product->price,$product->discount->discount)</strike></p>
+                      <p class="fw-semibold mb-3">
+                        @currency($product->price)
+                        <input type="hidden" name="total" value="{{ $product->price }}">
+                      </p>
+                    @else
+                      <p class="fw-semibold mb-3">
+                        @currency($product->price)
+                        <input type="hidden" name="total" value="{{ $product->price }}">
+                      </p>
+                    @endif
+                    <button type="submit" class="btn py-2 px-4 button-primary rounded-5 d-block" id="button-cart">Add to cart</button>
                   </form>
               </div>
             </div>

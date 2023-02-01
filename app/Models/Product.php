@@ -12,7 +12,7 @@ class Product extends Model
 
     protected $guarded = ['id'];
 
-    protected $with = ['category', 'stock', 'platform'];
+    protected $with = ['category', 'stock', 'platform', 'discount'];
 
     public function scopeSearchFilter($query, $search)
     {
@@ -51,6 +51,11 @@ class Product extends Model
     public function order_detail()
     {
         return $this->hasMany(OrderDetail::class);
+    }
+
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class);
     }
 
     public function getRouteKeyName()

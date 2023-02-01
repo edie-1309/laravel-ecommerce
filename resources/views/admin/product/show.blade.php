@@ -24,8 +24,12 @@
                     @endforeach
                   </p>
                   <p class="d-inline-block text-dark fw-semibold">
-                    Price : {{ $product->price }}
+                    Price : @currency($product->price)
                   </p>
+                  @isset($product->discount->discount)
+                    <p class="d-block text-dark fw-semibold">
+                      Discount : {{ $product->discount->discount }}%
+                  @endisset
                 </div>
               </div>
             </div>
