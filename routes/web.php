@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\Order;
 use App\Models\Product;
+use App\Models\Platform;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
@@ -83,7 +85,10 @@ Route::get('/history-detail/{order:slug}', [OrderController::class, 'history_det
 
 Route::get('/dashboard', function() {
     return view('admin/dashboard', [
-        'title' => 'Eazy Play! - Administrator'
+        'title' => 'Eazy Play! - Administrator',
+        'product' => Product::count(),
+        'platform' => Platform::count(),
+        'order' => Order::where('status', 'On Process')->count()
     ]);
 })->middleware('admin'); 
 
