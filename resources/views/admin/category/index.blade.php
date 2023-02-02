@@ -23,7 +23,7 @@
         </div>
     @endif
 
-    <table class="table">
+    <table class="table" id="categoryTable">
         <thead>
           <tr class="table-dark">
             <th scope="col">#</th>
@@ -71,5 +71,10 @@
         </div>
     </div>
 </div>
-  
+
+<script>
+  $(document).ready(function () {
+    $('#categoryTable').DataTable();
+  });
+</script>
 @endsection

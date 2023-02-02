@@ -21,7 +21,7 @@
         </div>
     @endif
 
-    <table class="table">
+    <table class="table" id="platformTable">
         <thead>
           <tr class="table-dark">
             <th scope="col">#</th>
@@ -70,4 +70,9 @@
     </div>
 </div>
   
+<script>
+  $(document).ready(function () {
+    $('#platformTable').DataTable();
+  });
+</script>
 @endsection

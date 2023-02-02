@@ -19,7 +19,7 @@
           </div>
       @endif
 
-      <table class="table">
+      <table class="table" id="stockTable">
           <thead>
             <tr class="table-dark">
               <th scope="col">#</th>
@@ -48,4 +48,10 @@
           </tbody>
       </table>
   </div>
+
+  <script>
+    $(document).ready(function () {
+      $('#stockTable').DataTable();
+    });
+  </script>
 @endsection
