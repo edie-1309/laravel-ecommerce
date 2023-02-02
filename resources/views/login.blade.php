@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-<div class="d-flex justify-content-center mt-5">
+<div class="d-flex justify-content-center mt-5 mb-4">
     <div class="col-lg-4">
         <h2 class="mb-5 text-center fw-bolder">Login</h2>
 
