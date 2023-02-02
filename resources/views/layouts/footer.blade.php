@@ -1,5 +1,5 @@
 <div class="footer">
-    <div class="container d-flex justify-content-between p-5 bg-dark text-white">
+    <div class="container d-flex justify-content-between p-5 text-white">
         <div class="w-25">
             <h2 class="fw-bold mb-4">Eazy Play!</h2>
         </div>

@@ -42,7 +42,7 @@
     <div class="p-3 d-flex justify-content-between">
         <div class="w-50 pr-3">
             <h5 class="fw-semibold">Address</h5>
-            <p class="text-muted fs-6">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, sint obcaecati impedit libero hic eum aspernatur quo necessitatibus amet placeat illo, at magnam natus voluptas harum velit? Vel nobis dolorum aspernatur atque, laudantium illum quam officia maxime placeat odio sapiente ex! Impedit nesciunt fuga repellat corporis ipsum in harum vero.</p>
+            <p class="text-muted fs-6">{{ $order->user->address }}</p>
         </div>
         <div class="p-3 border-start flex-fill">
             <p class="d-inline fs-6">Status : </p>

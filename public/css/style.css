@@ -141,13 +141,17 @@ a.page-link {
 }
 
 .footer {
-    background-color: rgb(33, 37, 41);
+    background-color: #0a1018;
 }
 
 .footer p, a{
     font-size: 14px;
     font-weight: 500;
-    color: rgb(118, 118, 118);
+    color: rgb(177, 177, 177);
+}
+
+.footer h5 {
+    color: #0a1018;
 }
 
 /* Utilities */
