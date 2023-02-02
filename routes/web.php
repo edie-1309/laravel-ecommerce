@@ -40,6 +40,12 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/about', function () {
+    return view('about', [
+        'title' => 'Eazy Play! - About'
+    ]);
+});
+
 Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name('login');
     Route::post('/login', 'authenticate');

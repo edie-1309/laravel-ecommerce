@@ -7,7 +7,7 @@
 
       <div class="w-50 d-flex justify-content-center hstack gap-5">
         <a href="/" class="text-decoration-none text-dark fw-bold">Home</a>
-        <a href="" class="text-decoration-none text-dark fw-bold">About</a>
+        <a href="/about" class="text-decoration-none text-dark fw-bold">About</a>
         <a href="/products" class="text-decoration-none text-dark fw-bold">All Product</a>
       </div>
       

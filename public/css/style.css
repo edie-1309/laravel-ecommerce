@@ -133,6 +133,13 @@ a.page-link {
     font-weight: 700;
 }
 
+.about {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .footer {
     background-color: rgb(33, 37, 41);
 }
