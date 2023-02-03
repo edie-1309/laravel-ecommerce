@@ -1,3 +1,5 @@
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+
 # Ecommerce (Laravel 9)
 Ini adalah project yang hampir sama dengan yang saya buat, yaitu E-commerce (Codeigniter). Project ini hanya menggunakan teknologi yang berbeda dengan E-commerce sebelumnya yakni menggunakan Laravel 9, untuk selebihnya semacam fitur itu masih sama seperti E-commerce (Codeigniter). Project ini dibuat untuk melatih skill Laravel saya yang baru-baru ini saya pelajari. Project ini belum menggunakan Payment Gateaway dan Ongkir jadi project ini masih sederhana.
 
@@ -32,5 +34,3 @@ Ini adalah project yang hampir sama dengan yang saya buat, yaitu E-commerce (Cod
 - Username = user123
 - Role : User
 - Password = passworduser123
-
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
